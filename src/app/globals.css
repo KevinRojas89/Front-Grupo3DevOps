@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
@@ -24,4 +12,97 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+/*primera secion */
+
+.logo {
+  max-width: 150px;
+}
+
+.links {
+  list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+  background-color: #fff; /* White header */
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container{
+  max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li{
+  display: inline-block;
+    margin-left: 30px;
+}
+ .text{
+  text-decoration: none;
+    color: #333;
+    font-weight: bold;
+ }
+
+h1{
+  text-align: left;
+}
+
+/*segunda secion */
+.hero {
+  background-color: #007bff; /* Blue background */
+  color: white;
+  padding: 80px 0;
+  position: relative; /* For angled background */
+  overflow: hidden;  /* To hide angled background overflow */
+}
+
+ .fondoimagen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-content {
+  width: 45%; 
+}
+
+.titulo1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.text-content span {
+  color: #ffc107; /* Yellow highlight */
+}
+
+.text-content ul {
+  list-style-type: disc;
+  padding-left: 40px;
+}
+
+.image-content {
+  width: 50%;
+  position: relative; /* For image positioning */
+  z-index: 1; /* Ensure image is above the angled background */
+}
+
+.image-content img {
+  width: 100%;
+  height: auto;
+}
+
+/* Angled Background (Optional) */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
