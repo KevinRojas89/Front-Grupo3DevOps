@@ -1,5 +1,14 @@
+ 'use client';
  import "./globals.css"
+ import { useRouter } from "next/navigation";
+
 export default function Home() {
+  const router = useRouter();
+
+  const goToWhoAreWe = () => {
+    router.push('/quienes')
+  }
+
   return (
     <div className="bg-white font-sans ">
 
@@ -8,8 +17,8 @@ export default function Home() {
           <img className="h-32" src="/imagenes/logofront.svg"></img>
           <nav>
             <ul className="flex space-x-6 ">
-              <li><a className="text-black hover:text-blue-900" href="/src/app/QuienesSomos">Quienes Somos?</a></li>
-              <li><a className="text-black hover:text-blue-900" href="/src/app/postulate">Postulate</a></li>
+              <li><a className="text-black hover:text-blue-900" onClick={goToWhoAreWe}>Quienes Somos?</a></li>
+              <li><a className="text-black hover:text-blue-900">Postulate</a></li>
             </ul>
           </nav>
         </div>
