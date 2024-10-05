@@ -89,9 +89,9 @@ const whoAreWe = () => {
         `}</style>
       </div>
       {/* se agrega la sección "container-2" con su respectiva animación showMe*/}
-      <div className="container-2 showMe flex flex-row space-x-56 justify-center mt-52 pt-48 pb-80">
+      <div className="container-2 showMe lg:flex lg:flex-row lg:space-x-56 lg:justify-center mt-52 pt-48 sm:pb-80 pb-48">
         <div className="valores">
-          <div className="panel bg-sky-300 pb-32 w-64 relative rounded-md">
+          <div className="panel bg-sky-300 pb-32 w-64 relative rounded-md mb-32">
             <h1 className="font-sans font-bold text-4xl  italic text-indigo-950 absolute -top-6">
               OBJETIVO
             </h1>
@@ -114,7 +114,7 @@ const whoAreWe = () => {
         </div>
 
         <div className="valores">
-          <div className="panel bg-sky-700 pb-56 w-64 relative rounded-md">
+          <div className="panel bg-sky-700 pb-56 w-64 relative rounded-md mb-32">
             <h1 className="font-sans font-bold text-4xl  italic text-indigo-950 absolute -top-6">
               MISIÓN
             </h1>
@@ -135,7 +135,7 @@ const whoAreWe = () => {
         </div>
 
         <div className="valores">
-          <div className="panel bg-sky-300 pb-72 w-64 relative rounded-md">
+          <div className="panel bg-sky-300 pb-72 w-64 relative rounded-md mb-32">
             <h1 className="font-sans font-bold text-4xl  italic text-indigo-950 absolute -top-6">
               VISIÓN
             </h1>
@@ -157,18 +157,26 @@ const whoAreWe = () => {
 
       <div className="bg-blue-950 text-white">
         <div class="container mx-auto py-12">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div class="sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 block">
             <div class="bg-blue-700 p-6">
               <h3 class="font-bold text-lg">INNOVACIÓN</h3>
-              <p class="mt-2">Nos enfocamos en crear soluciones que anticipen las necesidades futuras.</p>
+              <p class="mt-2">
+                Nos enfocamos en crear soluciones que anticipen las necesidades
+                futuras.
+              </p>
             </div>
             <div class="bg-blue-500 p-6">
               <h3 class="font-bold text-lg">CALIDAD</h3>
-              <p class="mt-2">Comprometidos con la entrega de productos y servicios de alta calidad.</p>
+              <p class="mt-2">
+                Comprometidos con la entrega de productos y servicios de alta
+                calidad.
+              </p>
             </div>
             <div class="bg-blue-700 p-6">
               <h3 class="font-bold text-lg">SOSTENIBILIDAD</h3>
-              <p class="mt-2">Desarrollamos tecnología respetuosa con el medio ambiente.</p>
+              <p class="mt-2">
+                Desarrollamos tecnología respetuosa con el medio ambiente.
+              </p>
             </div>
             <div class="bg-blue-500 p-6">
               <h3 class="font-bold text-lg">INTEGRIDAD</h3>
@@ -176,17 +184,17 @@ const whoAreWe = () => {
             </div>
             <div class="col-span-2 sm:col-span-2 lg:col-span-1 bg-blue-600 p-6">
               <h3 class="font-bold text-lg">COLABORACIÓN</h3>
-              <p class="mt-2">Trabajamos de cerca con nuestros clientes para garantizar soluciones que superen sus expectativas.</p>
+              <p class="mt-2">
+                Trabajamos de cerca con nuestros clientes para garantizar
+                soluciones que superen sus expectativas.
+              </p>
             </div>
           </div>
-          <div class="text-right">
+          <div class="lg:text-right text-center">
             <h1 class="text-4xl font-bold">VALORES</h1>
           </div>
         </div>
       </div>
-
-
-
     </div>
   );
 };
