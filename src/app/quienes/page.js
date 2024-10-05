@@ -8,7 +8,7 @@ const whoAreWe = () => {
       {/* se agrega mainTittle con animaciones alojadas en el "globals.css" aplicadas con tailwind */}
       <div className="mainTittle pb-80 pt-64 flex flex-col items-center">
         <img
-          src="/imagenes/logo.png"
+          src="/imagenes/logofront.svg"
           alt="logo"
           className="w-1/5 scale-up-center"
         />
@@ -45,7 +45,7 @@ const whoAreWe = () => {
             justify-content: center;
             padding: 20px;
             position: relative;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 50px auto;
           }
 
@@ -154,6 +154,39 @@ const whoAreWe = () => {
           </div>
         </div>
       </div>
+
+      <div className="bg-blue-950 text-white">
+        <div class="container mx-auto py-12">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-blue-700 p-6">
+              <h3 class="font-bold text-lg">INNOVACIÓN</h3>
+              <p class="mt-2">Nos enfocamos en crear soluciones que anticipen las necesidades futuras.</p>
+            </div>
+            <div class="bg-blue-500 p-6">
+              <h3 class="font-bold text-lg">CALIDAD</h3>
+              <p class="mt-2">Comprometidos con la entrega de productos y servicios de alta calidad.</p>
+            </div>
+            <div class="bg-blue-700 p-6">
+              <h3 class="font-bold text-lg">SOSTENIBILIDAD</h3>
+              <p class="mt-2">Desarrollamos tecnología respetuosa con el medio ambiente.</p>
+            </div>
+            <div class="bg-blue-500 p-6">
+              <h3 class="font-bold text-lg">INTEGRIDAD</h3>
+              <p class="mt-2">Operamos bajo los más altos estándares éticos.</p>
+            </div>
+            <div class="col-span-2 sm:col-span-2 lg:col-span-1 bg-blue-600 p-6">
+              <h3 class="font-bold text-lg">COLABORACIÓN</h3>
+              <p class="mt-2">Trabajamos de cerca con nuestros clientes para garantizar soluciones que superen sus expectativas.</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <h1 class="text-4xl font-bold">VALORES</h1>
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
   );
 };
