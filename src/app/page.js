@@ -9,6 +9,10 @@ export default function Home() {
     router.push("/quienes");
   };
 
+  const goToApply = () => {
+    router.push("/postulate");
+  };
+
   return (
     <div className="bg-white font-sans ">
       <div className="bg-white py-6 mx-1">
@@ -25,7 +29,9 @@ export default function Home() {
                 </a>
               </li>
               <li>
-                <a className="text-black hover:text-blue-900">Postulate</a>
+                <a className="text-black hover:text-blue-900 hover:cursor-pointer"
+                onClick={goToApply}
+                >Postulate</a>
               </li>
             </ul>
           </nav>

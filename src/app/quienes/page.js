@@ -3,7 +3,7 @@ import "../globals.css";
 
 const whoAreWe = () => {
   return (
-    <div className="mainContainer bg-gradient-to-r from-indigo-900 to-sky-400">
+    <div className="mainContainer">
       {/* se agrega un panel principal que contiene todo "mainContainer" */}
       {/* se agrega mainTittle con animaciones alojadas en el "globals.css" aplicadas con tailwind */}
       <div className="mainTittle pb-80 pt-64 flex flex-col items-center">
