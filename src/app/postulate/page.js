@@ -12,108 +12,115 @@ const toApply = () => {
         />
 
         <div className="container mx-auto p-8">
-          
           <h1 className="text-4xl font-bold text-center mb-4">
             Formulario de Aplicación
           </h1>
 
-          
           <hr className="border-t-2 border-gray-300 mb-8" />
 
-          
-          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            
-            <div className="mb-4">
+          <form className="bg-white shadow-lg rounded-lg p-8 mb-4 max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+              Registro de Información
+            </h2>
+
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="cedula"
               >
                 Cédula
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="cedula"
                 type="text"
                 placeholder="Ingrese su cédula"
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="nombre"
               >
                 Nombre
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="nombre"
                 type="text"
                 placeholder="Ingrese su nombre"
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="correo"
               >
                 Correo
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="correo"
                 type="email"
                 placeholder="Ingrese su correo"
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="celular"
               >
                 Número de Celular
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="celular"
                 type="text"
                 placeholder="Ingrese su número de celular"
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="profesion"
               >
                 Profesión
               </label>
               <select
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="profesion"
               >
-                <option value="profesion1">Ingeniería en sistemas computacionales</option>
+                <option value="profesion1">
+                  Ingeniería en sistemas computacionales
+                </option>
                 <option value="profesion2">Ingeniería en software</option>
-                <option value="profesion3">Ingeniería en redes y telecomunicaciones</option>
+                <option value="profesion3">
+                  Ingeniería en redes y telecomunicaciones
+                </option>
                 <option value="profesion4">Ciberseguridad</option>
                 <option value="profesion5">Inteligencia Artificial</option>
-                <option value="profesion6">Tecnologías de la información</option>
-                <option value="profesion7">Desarrollo de aplicaciones móviles</option>
-
+                <option value="profesion6">
+                  Tecnologías de la información
+                </option>
+                <option value="profesion7">
+                  Desarrollo de aplicaciones móviles
+                </option>
               </select>
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="experiencia"
               >
                 Años de Experiencia
               </label>
               <select
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="experiencia"
               >
                 <option value="0-1">0-1 años</option>
@@ -123,15 +130,15 @@ const toApply = () => {
               </select>
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="educacion"
               >
                 Nivel de Educación
               </label>
               <select
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="educacion"
               >
                 <option value="secundaria">Secundaria</option>
@@ -141,67 +148,99 @@ const toApply = () => {
               </select>
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="fecha"
               >
                 Seleccione la Fecha
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="fecha"
                 type="date"
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="ciudad"
               >
                 Ciudad
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="ciudad"
                 type="text"
                 placeholder="Ingrese su ciudad"
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="habilidades"
               >
                 Habilidades
               </label>
               <textarea
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="habilidades"
                 placeholder="Ingrese sus habilidades"
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-semibold mb-2"
                 htmlFor="cv"
               >
                 Adjuntar Hoja de Vida (opcional)
               </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="cv"
-                type="file"
-                accept=".pdf,.doc,.docx,.jpg,.png"
-              />
+              <div className="flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-4">
+                <input
+                  className="hidden"
+                  id="cv"
+                  type="file"
+                  accept=".pdf,.doc,.docx,.jpg,.png"
+                  onChange={(e) => {
+                    const fileName =
+                      e.target.files[0]?.name || "Ningún archivo seleccionado";
+                    setFileName(fileName); // Aquí puedes usar un estado para mostrar el nombre del archivo
+                  }}
+                />
+                <label
+                  htmlFor="cv"
+                  className="flex flex-col items-center cursor-pointer text-center"
+                >
+                  <svg
+                    className="w-12 h-12 text-blue-500 mb-2"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 7v14a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9 9 9-9"
+                    />
+                  </svg>
+                  <span className="text-gray-700">
+                    Arrastra y suelta tu archivo aquí o haz clic para subir
+                  </span>
+                  <span className="text-gray-500 text-sm">
+                    Formatos permitidos: PDF, DOC, DOCX, JPG, PNG
+                  </span>
+                </label>
+              </div>
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-center">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="submit"
               >
                 Enviar
