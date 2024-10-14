@@ -39,8 +39,8 @@ export default function Home() {
       </div>
 
       <div className="bg-white py-40  relative overflow-hidden shadow-sm">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl ">
+        <div className="container mx-auto px-4 relative z-10 flex">
+          <div className="max-w-3xl flex-1">
             <h1 className="text-5xl font-bold leading-tight mb-4">
               <span className="text-blue-800">Tecnología</span> que transforma
               <br></br>
@@ -54,11 +54,12 @@ export default function Home() {
               <li>Innovamos hoy, para cambiar el mañana.</li>
             </ul>
           </div>
+          <img
+            className="top-32 right-12 w-1/2 transform translate-x-1/8 -translate-y-1/6 flex-1"
+            src="/imagenes/fondo1.png"
+          ></img>
         </div>
-        <img
-          className="absolute top-32 right-12 w-1/2 transform translate-x-1/8 -translate-y-1/4 "
-          src="/imagenes/fondo1.png"
-        ></img>
+
       </div>
     </div>
   );
