@@ -55,7 +55,7 @@ export default function Home() {
             </ul>
           </div>
           <img
-            className="top-32 right-12 w-1/2 transform translate-x-1/8 -translate-y-1/6 flex-1"
+            className="top-32 right-12 w-1/2 transform translate-x-1/8 -translate-y-1/6 flex-1 rounded-full"
             src="/imagenes/fondo1.png"
           ></img>
         </div>
