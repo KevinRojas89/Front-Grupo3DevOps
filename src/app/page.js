@@ -30,7 +30,7 @@ export default function Home() {
               </li>
               <li>
                 <a className="text-black hover:text-blue-900 hover:cursor-pointer"
-                onClick={goToApply}
+                  onClick={goToApply}
                 >Postulate</a>
               </li>
             </ul>
