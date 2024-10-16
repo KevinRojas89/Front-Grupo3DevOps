@@ -1,8 +1,9 @@
 "use client";
+import Image from "next/image";
 import "./quienes.css";
 import { useRouter } from "next/navigation";
 
-const whoAreWe = () => {
+const WhoAreWe = () => {
   const router = useRouter();
   const goToHome = () => {
     router.push("/"); // Redirigir a la vista principal
@@ -12,11 +13,12 @@ const whoAreWe = () => {
       {/* se agrega un panel principal que contiene todo "mainContainer" */}
       {/* se agrega mainTittle con animaciones alojadas en el "globals.css" aplicadas con tailwind */}
       <div className="mainTittle pb-80 pt-64 flex flex-col items-center">
-        <img
+        <Image
           src="/imagenes/logofront.svg"
           alt="logo"
           className="w-1/5 scale-up-center hover:cursor-pointer"
-          
+          width={100}
+          height={100}
           onClick={goToHome}
         />
       </div>
@@ -24,10 +26,12 @@ const whoAreWe = () => {
       se recomienda agregar para cada sección nueva */}
       <div className="container showMe bg-sky-500 rounded-md">
         <div className="image-section slide-left">
-          <img
+          <Image
             src="/imagenes/d.jpg"
             alt="Technology Illustration"
             className="rounded-full"
+            width={100}
+            height={100}
           />
         </div>
         <div className="text-section bg-gradient-to-r from-sky-400 to-sky-200">
@@ -60,10 +64,12 @@ const whoAreWe = () => {
               su crecimiento y sostenibilidad.
             </p>
             <div className="image-v w-44 absolute -bottom-8 -right-9">
-              <img
+              <Image
                 src="/imagenes/valores1.jpeg"
                 alt="imagenPrimerValor"
                 className="rounded-full"
+                width={100}
+                height={100}
               />
             </div>
           </div>
@@ -85,6 +91,7 @@ const whoAreWe = () => {
                 src="/imagenes/valores2.jpeg"
                 alt="imagenSegundoValor"
                 className="rounded-full"
+                
               />
             </div>
           </div>
@@ -155,4 +162,4 @@ const whoAreWe = () => {
   );
 };
 
-export default whoAreWe;
+export default WhoAreWe;
