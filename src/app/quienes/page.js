@@ -1,7 +1,12 @@
 "use client";
 import "./quienes.css";
+import { useRouter } from "next/navigation";
 
 const whoAreWe = () => {
+  const router = useRouter();
+  const goToHome = () => {
+    router.push("/"); // Redirigir a la vista principal
+  };
   return (
     <div className="mainContainer">
       {/* se agrega un panel principal que contiene todo "mainContainer" */}
@@ -10,7 +15,9 @@ const whoAreWe = () => {
         <img
           src="/imagenes/logofront.svg"
           alt="logo"
-          className="w-1/5 scale-up-center"
+          className="w-1/5 scale-up-center hover:cursor-pointer"
+          
+          onClick={goToHome}
         />
       </div>
       {/* para las secciones de container y container-2, se les agrega la clase showMe para animación de scroll, 
@@ -63,7 +70,7 @@ const whoAreWe = () => {
         </div>
 
         <div className="valores">
-          <div className="panel bg-sky-700 pb-56 w-64 relative rounded-md mb-32">
+          <div className="panel bg-sky-300 pb-56 w-64 relative rounded-md mb-32">
             <h1 className="font-sans font-bold text-4xl  italic text-indigo-950 absolute -top-6">
               MISIÓN
             </h1>

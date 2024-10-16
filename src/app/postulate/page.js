@@ -3,6 +3,7 @@ import "../globals.css";
 import { getResponse } from "../services";
 import { useEffect, useState } from "react";
 
+
 const toApply = () => {
  const [dataProf,setDataProf] = useState([]);
  const [selectedProfession,setSelectedProfession] = useState();
