@@ -1,7 +1,34 @@
 "use client";
 import "../globals.css";
+import { getResponse } from "../services";
+import { useEffect, useState } from "react";
 
 const toApply = () => {
+ const [dataProf,setDataProf] = useState([]);
+ const [selectedProfession,setSelectedProfession] = useState();
+ const [dataCities,setDataCities] = useState({cities:[]});
+  useEffect(() => {
+    getInitialData();
+  }, []);
+
+  useEffect(() => {
+    if (selectedProfession){
+        getCities();
+    }
+    
+  },[selectedProfession]);
+
+  const getCities = async () => {
+        const dataCities = await getResponse('Candidate/profession/'+ selectedProfession);
+    setDataCities(dataCities.data);
+  }
+
+  const getInitialData = async () => {
+    const dataProfessions = await getResponse('Candidate/AllProfessions');
+    setDataProf(dataProfessions.data);
+
+  };
+
   return (
     <div className="mainContainer">
       <div className="pt-30 flex flex-col items-center ">
@@ -93,22 +120,13 @@ const toApply = () => {
               <select
                 className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="profesion"
+                onChange={(event)=>setSelectedProfession(event.target.value)}
               >
-                <option value="profesion1">
-                  Ingeniería en sistemas computacionales
-                </option>
-                <option value="profesion2">Ingeniería en software</option>
-                <option value="profesion3">
-                  Ingeniería en redes y telecomunicaciones
-                </option>
-                <option value="profesion4">Ciberseguridad</option>
-                <option value="profesion5">Inteligencia Artificial</option>
-                <option value="profesion6">
-                  Tecnologías de la información
-                </option>
-                <option value="profesion7">
-                  Desarrollo de aplicaciones móviles
-                </option>
+                {dataProf.map((profession) => (
+                  <option key={profession.ProfessionId} value={profession.ProfessionId}>
+                    {profession.Name}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -169,12 +187,17 @@ const toApply = () => {
               >
                 Ciudad
               </label>
-              <input
+              <select
                 className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
-                id="ciudad"
-                type="text"
-                placeholder="Ingrese su ciudad"
-              />
+                id="ciudades"
+                // onChange={(event)=>setSelectedProfession(event.target.value)}
+              >
+                {dataCities.cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="mb-6">
