@@ -30,8 +30,8 @@ const WhoAreWe = () => {
             src="/imagenes/d.jpg"
             alt="Technology Illustration"
             className="rounded-full"
-            width={100}
-            height={100}
+            width={740}
+            height={493}
           />
         </div>
         <div className="text-section bg-gradient-to-r from-sky-400 to-sky-200">
@@ -68,8 +68,8 @@ const WhoAreWe = () => {
                 src="/imagenes/valores1.jpeg"
                 alt="imagenPrimerValor"
                 className="rounded-full"
-                width={100}
-                height={100}
+                width={740}
+                height={493}
               />
             </div>
           </div>
@@ -87,11 +87,12 @@ const WhoAreWe = () => {
               desde pequeñas empresas hasta grandes corporaciones.
             </p>
             <div className="image-v w-44 absolute -bottom-8 -right-9">
-              <img
+              <Image
                 src="/imagenes/valores2.jpeg"
                 alt="imagenSegundoValor"
                 className="rounded-full"
-                
+                width={740}
+                height={493}
               />
             </div>
           </div>
@@ -108,10 +109,12 @@ const WhoAreWe = () => {
               de un futuro más conectado, eficiente y sostenible.
             </p>
             <div className="image-v w-36 absolute -bottom-8 -right-9">
-              <img
+              <Image
                 src="/imagenes/valores3.jpeg"
                 alt="imagenTercerValor"
                 className="rounded-full"
+                width={740}
+                height={493}
               />
             </div>
           </div>

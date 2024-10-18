@@ -18,7 +18,7 @@ export default function Home() {
     <div className="bg-white font-sans ">
       <div className="bg-white py-6 mx-1">
         <div className="container mx-10 md:flex md:items-center md:justify-between px-4 shadow-md block">
-          <img className="h-32" src="/imagenes/logofront.svg"></img>
+          <Image className="w-32" src="/imagenes/logofront.svg" alt="Logo principal" width={100} height={100}/>
           <nav>
             <ul className="flex space-x-6">
               <li>
@@ -55,10 +55,13 @@ export default function Home() {
               <li>Innovamos hoy, para cambiar el mañana.</li>
             </ul>
           </div>
-          <img
+          <Image
             className="top-32 right-12 w-1/2 transform translate-x-1/8 -translate-y-1/6 flex-1 rounded-full"
             src="/imagenes/fondo1.png"
-          ></img>
+            alt="fondo principal"
+            width={1000}
+            height={1000}
+          />
         </div>
 
       </div>

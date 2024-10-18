@@ -1,5 +1,6 @@
 "use client";
 import "../globals.css";
+import Image from "next/image";
 import { getResponse } from "../services";
 import { useEffect, useState } from "react";
 
@@ -12,12 +13,10 @@ const ToApply = () => {
     getInitialData();
   }, []);
 
-  useEffect(() => {
-    if (selectedProfession){
-        getCities();
-    }
-    
-  },[selectedProfession]);
+  
+  if (selectedProfession){
+    getCities();
+  }
 
   const getCities = async () => {
         const dataCities = await getResponse('Candidate/profession/'+ selectedProfession);
@@ -33,10 +32,11 @@ const ToApply = () => {
   return (
     <div className="mainContainer">
       <div className="pt-30 flex flex-col items-center ">
-        <img
-          style={{ width: "200px", height: "200px" }}
+        <Image
           src="/imagenes/logofront.svg"
           alt="logo"
+          width={200}
+          height={200}
         />
 
         <div className="container mx-auto p-8">
