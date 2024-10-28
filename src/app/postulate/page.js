@@ -33,7 +33,7 @@ const ToApply = () => {
     <div className="mainContainer">
       <div className="pt-30 flex flex-col items-center ">
         <Image
-          src="/imagenes/logofront.svg"
+          src="/imagenes/logo.svg"
           alt="logo"
           width={200}
           height={200}

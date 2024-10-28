@@ -14,7 +14,7 @@ const WhoAreWe = () => {
       {/* se agrega mainTittle con animaciones alojadas en el "globals.css" aplicadas con tailwind */}
       <div className="mainTittle pb-80 pt-64 flex flex-col items-center">
         <Image
-          src="/imagenes/logofront.svg"
+          src="/imagenes/logo.svg"
           alt="logo"
           className="w-1/5 scale-up-center hover:cursor-pointer"
           width={100}
@@ -27,7 +27,7 @@ const WhoAreWe = () => {
       <div className="container showMe bg-sky-500 rounded-md">
         <div className="image-section slide-left">
           <Image
-            src="/imagenes/d.jpg"
+            src="/imagenes/d.svg"
             alt="Technology Illustration"
             className="rounded-full"
             width={740}
@@ -65,7 +65,7 @@ const WhoAreWe = () => {
             </p>
             <div className="image-v w-44 absolute -bottom-8 -right-9">
               <Image
-                src="/imagenes/valores1.jpeg"
+                src="/imagenes/valores1.svg"
                 alt="imagenPrimerValor"
                 className="rounded-full"
                 width={740}
@@ -88,7 +88,7 @@ const WhoAreWe = () => {
             </p>
             <div className="image-v w-44 absolute -bottom-8 -right-9">
               <Image
-                src="/imagenes/valores2.jpeg"
+                src="/imagenes/valores2.svg"
                 alt="imagenSegundoValor"
                 className="rounded-full"
                 width={740}
@@ -110,7 +110,7 @@ const WhoAreWe = () => {
             </p>
             <div className="image-v w-36 absolute -bottom-8 -right-9">
               <Image
-                src="/imagenes/valores3.jpeg"
+                src="/imagenes/valores3.svg"
                 alt="imagenTercerValor"
                 className="rounded-full"
                 width={740}
