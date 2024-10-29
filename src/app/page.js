@@ -14,6 +14,10 @@ export default function Home() {
     router.push("/postulate");
   };
 
+  const goToLogin = () => {
+    router.push("/loginAdmin")
+  }
+
   return (
     <div className="bg-white font-sans ">
       <div className="bg-white py-6 mx-1">
@@ -34,6 +38,13 @@ export default function Home() {
                   onClick={goToApply}
                 >Postulate</a>
               </li>
+
+              <li>
+                <a className="text-black hover:text-blue-900 hover:cursor-pointer"
+                  onClick={goToLogin}
+                >Administrador</a>
+              </li>
+
             </ul>
           </nav>
         </div>
