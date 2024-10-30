@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 
 const ToApply = () => {
   const [dataProf, setDataProf] = useState([]);
+  const [fileName, setFileName] = useState("");
+  const [file, setFile] = useState(null);
   const [selectedProfession, setSelectedProfession] = useState();
-  const [dataCities, setDataCities] = useState({ cities: [] });
+  const [dataCities, setDataCities] = useState({ cities: [], skills: [] });
   useEffect(() => {
     getInitialData();
   }, []);
@@ -46,7 +48,6 @@ const ToApply = () => {
             <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
               Registro de Información
             </h2>
-
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -61,7 +62,6 @@ const ToApply = () => {
                 placeholder="Ingrese su cédula"
               />
             </div>
-
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -76,7 +76,6 @@ const ToApply = () => {
                 placeholder="Ingrese su nombre"
               />
             </div>
-
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -91,7 +90,6 @@ const ToApply = () => {
                 placeholder="Ingrese su correo"
               />
             </div>
-
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -106,7 +104,6 @@ const ToApply = () => {
                 placeholder="Ingrese su número de celular"
               />
             </div>
-
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -129,7 +126,6 @@ const ToApply = () => {
                 ))}
               </select>
             </div>
-
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -147,7 +143,6 @@ const ToApply = () => {
                 <option value="10+">Más de 10 años</option>
               </select>
             </div>
-
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -165,7 +160,6 @@ const ToApply = () => {
                 <option value="doctorado">Doctorado</option>
               </select>
             </div>
-
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -179,7 +173,6 @@ const ToApply = () => {
                 type="date"
               />
             </div>
-
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -199,7 +192,6 @@ const ToApply = () => {
                 ))}
               </select>
             </div>
-
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -207,13 +199,36 @@ const ToApply = () => {
               >
                 Habilidades
               </label>
-              <textarea
-                className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
-                id="habilidades"
-                placeholder="Ingrese sus habilidades"
-              />
+              <div id="habilidades">
+                <div>
+                  {dataCities.skills.length > 0 ? (
+                    dataCities.skills.map((skill) => (
+                      <div
+                        key={skill.skillId}
+                        className="flex items-center mb-2"
+                      >
+                        <input
+                          type="checkbox"
+                          id={`skill-${skill.skillId}`}
+                          name="habilidades"
+                          value={skill.skillId}
+                          className="mr-2 h-4 w-4 text-blue-500 border-gray-300 rounded focus:ring-blue-500"
+                        />
+                        <label
+                          htmlFor={`skill-${skill.skillId}`}
+                          className="text-gray-700"
+                        >
+                          {skill.skillName}
+                        </label>
+                      </div>
+                    ))
+                  ) : (
+                    <p>No hay habilidades para esta profesión</p>
+                  )}
+                </div>
+              </div>
             </div>
-
+            (
             <div className="mb-6">
               <label
                 className="block text-gray-700 text-sm font-semibold mb-2"
@@ -228,9 +243,8 @@ const ToApply = () => {
                   type="file"
                   accept=".pdf,.doc,.docx,.jpg,.png"
                   onChange={(e) => {
-                    const fileName =
-                      e.target.files[0]?.name || "Ningún archivo seleccionado";
-                    setFileName(fileName); // Aquí puedes usar un estado para mostrar el nombre del archivo
+                    const selectedFile = e.target.files[0];
+                    setFile(selectedFile);
                   }}
                 />
                 <label
@@ -251,16 +265,23 @@ const ToApply = () => {
                       d="M3 7v14a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9 9 9-9"
                     />
                   </svg>
-                  <span className="text-gray-700">
-                    Arrastra y suelta tu archivo aquí o haz clic para subir
-                  </span>
-                  <span className="text-gray-500 text-sm">
-                    Formatos permitidos: PDF, DOC, DOCX, JPG, PNG
-                  </span>
+                  {file ? (
+                    <span className="text-gray-700">
+                      Archivo cargado: {file.name}
+                    </span>
+                  ) : (
+                    <>
+                      <span className="text-gray-700">
+                        Arrastra y suelta tu archivo aquí o haz clic para subir
+                      </span>
+                      <span className="text-gray-500 text-sm">
+                        Formatos permitidos: PDF, DOC, DOCX, JPG, PNG
+                      </span>
+                    </>
+                  )}
                 </label>
               </div>
             </div>
-
             <div className="flex items-center justify-center">
               <button
                 className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"

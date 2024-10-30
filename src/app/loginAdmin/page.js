@@ -1,6 +1,39 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+import { postResponse } from "../services";
+import { useRouter } from "next/navigation";
 
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      AdminId: username,
+      PasswordAdmin: password,
+    };
+
+    try {
+      const response = await postResponse("Api/Login", data); 
+      if (response.status === 200) {
+        alert(response.data.message);
+        localStorage.setItem("loggedIn", true);
+        router.push('/paneladmin');
+        
+      } else {
+        alert("Credenciales incorrectas");
+      }
+    } catch (err) {
+      console.error("Error de autenticación:", err);
+      alert("Hubo un problema al iniciar sesión");
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="w-full max-w-md">
@@ -21,27 +54,34 @@ function Login() {
             </h3>
           </div>
           <div className="p-6">
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="space-y-2">
-                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                <label className="text-sm font-medium leading-none">
                   Username
                 </label>
                 <input
                   type="text"
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file.text-sm file.font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
-                ></input>
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="flex h-10 w-full rounded-md border px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none"
+                />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                <label className="text-sm font-medium leading-none">
                   Password
                 </label>
                 <input
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
                   type="password"
-                ></input>
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="flex h-10 w-full rounded-md border px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none"
+                />
               </div>
-              <button className="before:ease relative h-10 w-full rounded-md font-medium overflow-hidden border border-black bg-black text-white shadow-2x1 transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-black hover:before:-translate-x-[400px] px-4 py-2 disabled:pointer-events-none">
-                <span relative="relative z-10">Login</span>
+              <button
+                type="submit"
+                className="relative h-10 w-full rounded-md font-medium border border-black bg-black text-white shadow transition-all hover:shadow-black px-4 py-2"
+              >
+                Login
               </button>
             </form>
           </div>
