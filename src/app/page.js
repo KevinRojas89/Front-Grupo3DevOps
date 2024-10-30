@@ -15,7 +15,7 @@ export default function Home() {
   };
 
   const goToLogin = () => {
-    router.push("/loginAdmin")
+    router.push("/loginAdmin");
   }
 
   return (

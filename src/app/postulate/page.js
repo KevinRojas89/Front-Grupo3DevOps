@@ -4,40 +4,36 @@ import Image from "next/image";
 import { getResponse } from "../services";
 import { useEffect, useState } from "react";
 
-
 const ToApply = () => {
- const [dataProf,setDataProf] = useState([]);
- const [selectedProfession,setSelectedProfession] = useState();
- const [dataCities,setDataCities] = useState({cities:[]});
+  const [dataProf, setDataProf] = useState([]);
+  const [selectedProfession, setSelectedProfession] = useState();
+  const [dataCities, setDataCities] = useState({ cities: [] });
   useEffect(() => {
     getInitialData();
   }, []);
 
-  
-  if (selectedProfession){
-    getCities();
-  }
-
   const getCities = async () => {
-        const dataCities = await getResponse('Candidate/profession/'+ selectedProfession);
+    const dataCities = await getResponse(
+      "Candidate/profession/" + selectedProfession
+    );
     setDataCities(dataCities.data);
-  }
+  };
+
+  useEffect(() => {
+    if (selectedProfession) {
+      getCities();
+    }
+  }, [selectedProfession]);
 
   const getInitialData = async () => {
-    const dataProfessions = await getResponse('Candidate/AllProfessions');
+    const dataProfessions = await getResponse("Candidate/AllProfessions");
     setDataProf(dataProfessions.data);
-
   };
 
   return (
     <div className="mainContainer">
       <div className="pt-30 flex flex-col items-center ">
-        <Image
-          src="/imagenes/logo.svg"
-          alt="logo"
-          width={200}
-          height={200}
-        />
+        <Image src="/imagenes/logo.svg" alt="logo" width={200} height={200} />
 
         <div className="container mx-auto p-8">
           <h1 className="text-4xl font-bold text-center mb-4">
@@ -121,10 +117,13 @@ const ToApply = () => {
               <select
                 className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="profesion"
-                onChange={(event)=>setSelectedProfession(event.target.value)}
+                onChange={(event) => setSelectedProfession(event.target.value)}
               >
                 {dataProf.map((profession) => (
-                  <option key={profession.ProfessionId} value={profession.ProfessionId}>
+                  <option
+                    key={profession.ProfessionId}
+                    value={profession.ProfessionId}
+                  >
                     {profession.Name}
                   </option>
                 ))}
