@@ -10,7 +10,9 @@ const PanelAdmin = () => {
 
   async function obtenerCandidatos() {
     try {
-      const respuesta = await axios.get('http://localhost:4000/Candidate/AllCandidates');
+      const respuesta = await axios.get(
+        "http://localhost:4000/Candidate/AllCandidates"
+      );
 
       // Guarda los datos en el estado
       setCandidatos(respuesta.data);
@@ -20,8 +22,8 @@ const PanelAdmin = () => {
     } catch (error) {
       console.error("Error al obtener los candidatos:", error);
     }
-
   }
+
   useEffect(() => {
     if (!localStorage.getItem("loggedIn")) {
       alert("Debes loguearte para acceder a esta pestaña.");
@@ -30,69 +32,112 @@ const PanelAdmin = () => {
     obtenerCandidatos();
   }, []);
 
-
   return (
+    <div className="min-h-screen bg-gray-100 py-8 px-4">
+      <div className="max-w-full mx-auto bg-white shadow-lg rounded-lg p-6">
+        <h1 className="text-3xl font-semibold text-center text-gray-700 mb-6">
+          Panel de Administración de Candidatos
+        </h1>
 
-    <>
-      <table className="table-fixed ">
-        <thead>
-          <tr>
-            <th className="w-1/6">CC</th>
-            <th className="w-1/6">Nombres</th>
-            <th className="w-1/6">Correos</th>
-            <th className="w-1/6">Tel</th>
-            <th className="w-1/6">Profesión</th>
-            <th className="w-1/6">Años de Exp</th>
-            <th className="w-1/6">Nivel Educ</th>
-            <th className="w-1/6">Fecha de Registro</th>
-            <th className="w-1/6">Ciudad</th>
-            <th className="w-1/6">Habilidades</th>
-            <th className="w-1/6">Doct</th>
-            <th className="w-1/6">Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {candidatos.length > 0 ? (
-            candidatos.map((candidato, index) => (
-              <tr key={index}>
-                <td>{candidato.CandidatesId}</td>
-                <td>{candidato.Name}</td>
-                <td>{candidato.Email}</td>
-                <td>{candidato.Phone}</td>
-                <td>{candidato.ProfessionId}</td>
-                <td>{candidato.ExperienceYears}</td>
-                <td>{candidato.EducationLevel}</td>
-                <td>{candidato.ApplicationDate}</td>
-                <td>{candidato.City}</td>
-
-                <td>
-                  {candidato.Skill.map((skill, index) => (
-                    <p key={index}>{skill.name}</p>
-                  ))}
-                </td>
-
-                <td>{candidato.Resume}</td>
-                <td>
-                  <button
-                    type="button"
-                    className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                  >
-                    Eliminar
-                  </button>
-                </td>
+        {/* Contenedor con desplazamiento horizontal */}
+        <div className="overflow-x-auto">
+          <table className="min-w-full table-auto border-collapse border border-gray-200">
+            <thead className="bg-indigo-400 text-gray-800">
+              <tr>
+                <th className="px-4 py-3 text-left">CC</th>
+                <th className="px-4 py-3 text-left">Nombres</th>
+                <th className="px-4 py-3 text-left">Correos</th>
+                <th className="px-4 py-3 text-left">Tel</th>
+                <th className="px-4 py-3 text-left hidden md:table-cell">
+                  Profesión
+                </th>
+                <th className="px-4 py-3 text-left hidden sm:table-cell">
+                  Años de Exp
+                </th>
+                <th className="px-4 py-3 text-left hidden sm:table-cell">
+                  Nivel Educ
+                </th>
+                <th className="px-4 py-3 text-left hidden lg:table-cell">
+                  Fecha de Registro
+                </th>
+                <th className="px-4 py-3 text-left hidden lg:table-cell">
+                  Ciudad
+                </th>
+                <th className="px-4 py-3 text-left">Habilidades</th>
+                <th className="px-4 py-3 text-left hidden md:table-cell">
+                  Doct
+                </th>
+                <th className="px-4 py-3 text-left">Eliminar</th>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="12" className="text-center">
-                No hay candidatos disponibles.
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+            </thead>
 
-    </>
+            <tbody className="bg-white">
+              {candidatos.length > 0 ? (
+                candidatos.map((candidato, index) => (
+                  <tr
+                    key={index}
+                    className="hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    <td className="px-4 py-3">{candidato.CandidatesId}</td>
+                    <td className="px-4 py-3">{candidato.Name}</td>
+                    <td className="px-4 py-3">{candidato.Email}</td>
+                    <td className="px-4 py-3">{candidato.Phone}</td>
+                    <td className="px-4 py-3 hidden md:table-cell">
+                      {candidato.ProfessionId}
+                    </td>
+                    <td className="px-4 py-3 hidden sm:table-cell">
+                      {candidato.ExperienceYears}
+                    </td>
+                    <td className="px-4 py-3 hidden sm:table-cell">
+                      {candidato.EducationLevel}
+                    </td>
+                    <td className="px-4 py-3 hidden lg:table-cell">
+                      {candidato.ApplicationDate}
+                    </td>
+                    <td className="px-4 py-3 hidden lg:table-cell">
+                      {candidato.City}
+                    </td>
+
+                    <td className="px-4 py-3">
+                      {candidato.Skill.map((skill, index) => (
+                        <p key={index} className="text-gray-600">
+                          {skill.name}
+                        </p>
+                      ))}
+                    </td>
+
+                    <td className="px-4 py-3 hidden md:table-cell">
+                      <a
+                        href={candidato.Resume}
+                        target="_blank"
+                        className="text-blue-500 hover:underline"
+                      >
+                        Ver Documento
+                      </a>
+                    </td>
+
+                    <td className="px-4 py-3">
+                      <button
+                        type="button"
+                        className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5"
+                      >
+                        Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="12" className="text-center py-4 text-gray-500">
+                    No hay candidatos disponibles.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   );
 };
 
