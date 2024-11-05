@@ -5,22 +5,22 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const PanelAdmin = () => {
-  const [candidatos,setCandidatos] = useState([]);
+  const [candidatos, setCandidatos] = useState([]);
   const router = useRouter();
-  
+
   async function obtenerCandidatos() {
     try {
-      const respuesta = await axios.get('http://localhost:3306/AllCandidates');
-      
+      const respuesta = await axios.get('http://localhost:4000/Candidate/AllCandidates');
+
       // Guarda los datos en el estado
       setCandidatos(respuesta.data);
-      
+
       // Imprime los datos en consola
       console.log("Candidatos:", respuesta.data);
     } catch (error) {
       console.error("Error al obtener los candidatos:", error);
     }
-    
+
   }
   useEffect(() => {
     if (!localStorage.getItem("loggedIn")) {
@@ -32,7 +32,7 @@ const PanelAdmin = () => {
 
 
   return (
-    
+
     <>
       <table className="table-fixed ">
         <thead>
@@ -55,17 +55,23 @@ const PanelAdmin = () => {
           {candidatos.length > 0 ? (
             candidatos.map((candidato, index) => (
               <tr key={index}>
-                <td>{candidato.cc}</td>
-                <td>{candidato.nombres}</td>
-                <td>{candidato.correos}</td>
-                <td>{candidato.tel}</td>
-                <td>{candidato.profesion}</td>
-                <td>{candidato.anosExp}</td>
-                <td>{candidato.nivelEduc}</td>
-                <td>{candidato.fechaRegistro}</td>
-                <td>{candidato.ciudad}</td>
-                <td>{candidato.habilidades}</td>
-                <td>{candidato.doct}</td>
+                <td>{candidato.CandidatesId}</td>
+                <td>{candidato.Name}</td>
+                <td>{candidato.Email}</td>
+                <td>{candidato.Phone}</td>
+                <td>{candidato.ProfessionId}</td>
+                <td>{candidato.ExperienceYears}</td>
+                <td>{candidato.EducationLevel}</td>
+                <td>{candidato.ApplicationDate}</td>
+                <td>{candidato.City}</td>
+
+                <td>
+                  {candidato.Skill.map((skill, index) => (
+                    <p key={index}>{skill.name}</p>
+                  ))}
+                </td>
+
+                <td>{candidato.Resume}</td>
                 <td>
                   <button
                     type="button"
