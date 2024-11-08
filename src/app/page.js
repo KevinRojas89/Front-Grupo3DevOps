@@ -50,8 +50,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-white py-40  relative overflow-hidden shadow-sm">
-        <div className="container mx-auto px-4 relative z-10 flex">
+      <div className="bg-white py-40  overflow-hidden shadow-sm">
+        <div className="container mx-auto px-4 z-10 flex">
           <div className="max-w-3xl flex-1">
             <h1 className="text-5xl font-bold leading-tight mb-4">
               <span className="text-blue-800">Tecnología</span> que transforma

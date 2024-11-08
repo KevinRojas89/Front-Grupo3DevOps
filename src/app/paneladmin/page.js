@@ -3,33 +3,27 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { getResponse } from "../services";
 
 const PanelAdmin = () => {
-  const [candidatos, setCandidatos] = useState([]);
+  const [candidatos, setCandidates] = useState([]);
   const router = useRouter();
 
-  async function obtenerCandidatos() {
-    try {
-      const respuesta = await axios.get(
-        "http://localhost:4000/Candidate/AllCandidates"
-      );
-
-      // Guarda los datos en el estado
-      setCandidatos(respuesta.data);
-
-      // Imprime los datos en consola
-      console.log("Candidatos:", respuesta.data);
-    } catch (error) {
-      console.error("Error al obtener los candidatos:", error);
-    }
-  }
+  
+      const getCandidates = async () => {
+        const respuesta = await getResponse(
+          "Candidate/AllCandidates/"
+        );
+        setCandidates(respuesta.data);
+      };
+      
 
   useEffect(() => {
     if (!localStorage.getItem("loggedIn")) {
       alert("Debes loguearte para acceder a esta pestaña.");
       router.push("/loginAdmin");
     }
-    obtenerCandidatos();
+    getCandidates();
   }, []);
 
   return (

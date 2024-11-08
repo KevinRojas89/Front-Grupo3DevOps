@@ -5,9 +5,6 @@ import { useRouter } from "next/navigation";
 
 const WhoAreWe = () => {
   const router = useRouter();
-  const goToHome = () => {
-    router.push("/"); // Redirigir a la vista principal
-  };
   return (
     <div className="mainContainer">
       {/* se agrega un panel principal que contiene todo "mainContainer" */}
@@ -16,10 +13,9 @@ const WhoAreWe = () => {
         <Image
           src="/imagenes/logo.svg"
           alt="logo"
-          className="w-1/5 scale-up-center hover:cursor-pointer"
+          className="w-1/5 scale-up-center"
           width={100}
           height={100}
-          onClick={goToHome}
         />
       </div>
       {/* para las secciones de container y container-2, se les agrega la clase showMe para animación de scroll, 
