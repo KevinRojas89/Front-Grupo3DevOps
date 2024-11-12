@@ -3,8 +3,16 @@ import "../globals.css";
 import Image from "next/image";
 import { getResponse } from "../services";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const ToApply = () => {
+  const router = useRouter();
+  
+  const handleLogoClick = () => {
+    router.push("/"); // Cambia "/" a la ruta a la que quieras redirigir
+  };
+
+
   const [dataProf, setDataProf] = useState([]);
   const [fileName, setFileName] = useState("");
   const [file, setFile] = useState(null);
@@ -35,7 +43,7 @@ const ToApply = () => {
   return (
     <div className="mainContainer">
       <div className="pt-30 flex flex-col items-center ">
-        <Image src="/imagenes/logo.svg" alt="logo" width={200} height={200} />
+        <Image src="/imagenes/logo.svg" alt="logo" width={200} height={200} onClick={handleLogoClick}/>
 
         <div className="container mx-auto p-8">
           <h1 className="text-4xl font-bold text-center mb-4">

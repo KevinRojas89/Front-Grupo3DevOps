@@ -9,6 +9,9 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const router = useRouter();
+  const handleLogoClick = () => {
+    router.push("/"); // Cambia "/" a la ruta a la que quieras redirigir
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,11 +42,12 @@ function Login() {
       <div className="w-full max-w-md">
         <div className="flex justify-center">
           <Image
-            className="h-25 w-25"
+            className="h-30 w-40"
             src="/imagenes/logo.svg"
             alt="logo login"
-            width={100}
+            width={200}
             height={100}
+            onClick={handleLogoClick}
           />
         </div>
 
