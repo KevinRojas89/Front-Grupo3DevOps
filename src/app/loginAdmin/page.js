@@ -10,7 +10,7 @@ function Login() {
 
   const router = useRouter();
   const handleLogoClick = () => {
-    router.push("/"); // Cambia "/" a la ruta a la que quieras redirigir
+    router.push("/"); 
   };
 
   const handleSubmit = async (e) => {
