@@ -185,7 +185,7 @@ const ToApply = () => {
 
             <div className="mb-6">
               <label className="block text-gray-700 text-sm font-semibold mb-2">Hoja de Vida</label>
-              <input type="file" accept=".pdf,.doc,.docx,.jpg,.png" onChange={(e) => setFile(e.target.files[0])} required />
+              <input type="file" accept=".pdf,.doc,.docx,.jpg,.png" onChange={(e) => setFile(e.target.files[0])} />
               {file && <span className="text-gray-700">Archivo cargado: {file.name}</span>}
             </div>
 
