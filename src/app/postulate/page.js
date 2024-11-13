@@ -4,6 +4,8 @@ import Image from "next/image";
 import { getResponse, postResponse } from "../services";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import { urlBase } from "../services";
 
 const ToApply = () => {
   const router = useRouter();
@@ -41,48 +43,60 @@ const ToApply = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const formData = new FormData();
+    // Organiza los datos de la misma manera que en la petición de Postman
     formData.append("data", JSON.stringify({
-      CandidatesId: event.target.cedula.value,
+      CandidatesId: parseInt(event.target.cedula.value, 10),
       Name: event.target.nombre.value,
       Email: event.target.correo.value,
       Phone: event.target.celular.value,
-      ProfessionId: selectedProfession,
-      ExperienceYears: event.target.experiencia.value,
+      ProfessionId: parseInt(selectedProfession,),
+      ExperienceYears: parseInt(event.target.experiencia.value, 10),
       EducationLevel: event.target.educacion.value,
       ApplicationDate: event.target.fecha.value,
       City: event.target.ciudades.value,
       Skill: Array.from(event.target.habilidades)
         .filter(input => input.checked)
-        .map(input => input.value),
+        .map(input => ({ id: parseInt(input.value, 10), name: dataCities.skills.filter(sk => {if (sk.skillId == input.value) return sk.skillName})[0].skillName})), 
     }));
-
+  
     if (file) {
-      formData.append("Resume", file);
+      formData.append("resume", file);
     }
-
+  
     try {
-      const response = await postResponse("Candidate/candidates", {
+      const response = await axios.post(urlBase + 'Candidate/candidates', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
-
-      if (response.ok) {
-        alert("Formulario enviado con éxito");
+  
+      if (response.status === 200) {
+        alert("Se ha postulado con éxito");
+        router.push('/');
       } else {
-        const errorData = await response.json();
-        console.error("Error en la respuesta del servidor:", errorData);
-        alert("Error al enviar el formulario. " + (errorData.error || "Por favor, verifica los datos."));
+        console.error("Error en la respuesta del servidor:", response.data);
+        alert("Error al enviar el formulario. " + (response.data.error || "Por favor, verifica los datos."));
       }
+
     } catch (error) {
       console.error("Error de conexión o en el envío:", error);
       alert("Error en la conexión o en el envío del formulario. Revisa la consola para más detalles.");
     }
   };
+  
 
   return (
     <div className="mainContainer">
-      <div className="pt-30 flex flex-col items-center">
-        <Image src="/imagenes/logo.svg" alt="logo" width={200} height={200} onClick={handleLogoClick} />
+      <button data-tooltip-target="tooltip-home" type="button" class="inline-flex flex-col items-center justify-center px-5 rounded-tr-full rounded-tl-full hover:bg-gray-50 dark:hover:bg-gray-800 group">
+        <svg class="w-10 h-10 mb-1 text-gray-50 dark:text-gray-300 group-hover:text-blue-700 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" onClick={handleLogoClick}>
+          <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+        </svg>
+        <span class="sr-only"></span>
+      </button>
+      <div className="pt-30 flex flex-col items-center ">
+      <Image src="/imagenes/logo.svg" alt="logo" width={200} height={200} onClick={handleLogoClick} />
         <div className="container mx-auto p-8">
           <h1 className="text-4xl font-bold text-center mb-4">Formulario de Aplicación</h1>
           <hr className="border-t-2 border-gray-300 mb-8" />
