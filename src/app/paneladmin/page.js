@@ -23,7 +23,7 @@
         router.push("/loginAdmin");
       }
       getCandidates();
-    }, []);
+    }, [router]);
 
     const handleDelete = async (candidato) => {
       const response = await axios.delete(
@@ -108,7 +108,7 @@
                       <td className="px-4 py-3">{candidato.Email}</td>
                       <td className="px-4 py-3">{candidato.Phone}</td>
                       <td className="px-4 py-3 hidden md:table-cell">
-                        {candidato.ProfessionId}
+                        {candidato.profession}
                       </td>
                       <td className="px-4 py-3 hidden sm:table-cell">
                         {candidato.ExperienceYears}
@@ -126,7 +126,7 @@
                       <td className="px-4 py-3">
                         {candidato.Skill.map((skill, index) => (
                           <p key={index} className="text-gray-600">
-                            {skill.name}
+                            {skill.name.name}
                           </p>
                         ))}
                       </td>
