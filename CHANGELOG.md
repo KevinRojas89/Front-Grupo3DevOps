@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/KevinRojas89/Front-Grupo3DevOps/compare/v1.1.0...v1.2.0) (2024-11-14)
+
+
+### Features
+
+* show profession ([38cb6fa](https://github.com/KevinRojas89/Front-Grupo3DevOps/commit/38cb6faf901dc7ad1f68b999ec459f37664b49b0))
+
 ## [1.1.0](https://github.com/KevinRojas89/Front-Grupo3DevOps/compare/v1.0.0...v1.1.0) (2024-11-14)
 
 
