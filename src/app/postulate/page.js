@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { urlBase } from "../services";
+import { useCallback } from "react";
 
 const ToApply = () => {
   const router = useRouter();
@@ -23,18 +24,20 @@ const ToApply = () => {
     getInitialData();
   }, []);
 
-  const getCities = async () => {
+  const getCities = useCallback(async () => {
     const dataCities = await getResponse(
       "Candidate/profession/" + selectedProfession
     );
     setDataCities(dataCities.data);
-  };
+  }, [selectedProfession]);
+
+  
 
   useEffect(() => {
     if (selectedProfession) {
       getCities();
     }
-  }, [selectedProfession]);
+  }, [selectedProfession, getCities]);
 
   const getInitialData = async () => {
     const dataProfessions = await getResponse("Candidate/AllProfessions");
