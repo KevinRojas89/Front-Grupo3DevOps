@@ -6,7 +6,6 @@ export const urlBase = 'https://grupo-3-devops.onrender.com/Candidate/AllCandida
 
 export const getResponse = async (url) => {
   try {
-   
     const response = await axios.get(`${urlBase}${url}`);
     return response;
   } catch (error) {
