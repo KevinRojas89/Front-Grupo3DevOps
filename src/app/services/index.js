@@ -1,7 +1,7 @@
 import axios from "axios";
 
 axios.defaults.validateStatus = () => true;
-export const urlBase = 'https://grupo-3-devops.onrender.com/Candidate/AllCandidates'; 
+export const urlBase = 'https://grupo-3-devops.onrender.com/'; 
 
 
 export const getResponse = async (url) => {
