@@ -1,5 +1,6 @@
-  "use client";
-
+"use client";
+  import { ToastContainer, toast } from "react-toastify";
+  import 'react-toastify/dist/ReactToastify.css'
   import { useEffect, useState } from "react";
   import { useRouter } from "next/navigation";
   import axios from "axios";
@@ -8,9 +9,14 @@
   const PanelAdmin = () => {
     const [candidatos, setCandidates] = useState([]);
     const router = useRouter();
+  const notify = (mensaje) => toast(mensaje);
     const handleLogoClick = () => {
       router.push("/");
     };  
+
+
+  const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 
     const getCandidates = async () => {
       const respuesta = await getResponse("Candidate/AllCandidates/");
@@ -23,7 +29,7 @@
         router.push("/loginAdmin");
       }
       getCandidates();
-    }, []);
+    }, [router]);
 
     const handleDelete = async (candidato) => {
       const response = await axios.delete(
@@ -31,9 +37,11 @@
       );
 
       if (response.status === 200) {
-        alert("Se ha eliminado el candidato con éxito");
+        notify("Se ha eliminado el candidato con éxito");
+        await esperar(1000);
+
       } else {
-        alert("Ocurrió un error al eliminar el candidato");
+        notify("Ocurrió un error al eliminar el candidato");
       }
 
       await getCandidates();
@@ -42,6 +50,7 @@
 
     return (
       <div className="min-h-screen bg-gray-100 py-8 px-4">
+      <ToastContainer></ToastContainer>
         <div className="max-w-full mx-auto bg-white shadow-lg rounded-lg p-6">
           <button
             data-tooltip-target="tooltip-home"
@@ -60,6 +69,7 @@
             </svg>
             <span class="sr-only"></span>
           </button>
+          
           <h1 className="text-3xl font-semibold text-center text-gray-700 mb-6">
             Panel de Administración de Candidatos
           </h1>
@@ -69,30 +79,30 @@
             <table className="min-w-full table-auto border-collapse border border-gray-200">
               <thead className="bg-indigo-400 text-gray-800">
                 <tr>
-                  <th className="px-4 py-3 text-left">CC</th>
-                  <th className="px-4 py-3 text-left">Nombres</th>
-                  <th className="px-4 py-3 text-left">Correos</th>
-                  <th className="px-4 py-3 text-left">Tel</th>
+                  <th className="px-4 py-3 text-left">Cédula</th>
+                  <th className="px-4 py-3 text-left">Nombre</th>
+                  <th className="px-4 py-3 text-left">Correo</th>
+                  <th className="px-4 py-3 text-left">Celular</th>
                   <th className="px-4 py-3 text-left hidden md:table-cell">
                     Profesión
                   </th>
                   <th className="px-4 py-3 text-left hidden sm:table-cell">
-                    Años de Exp
+                    Años de Experiencia
                   </th>
                   <th className="px-4 py-3 text-left hidden sm:table-cell">
-                    Nivel Educ
+                    Nivel Educación
                   </th>
                   <th className="px-4 py-3 text-left hidden lg:table-cell">
-                    Fecha de Registro
+                    Fecha de Postulación
                   </th>
                   <th className="px-4 py-3 text-left hidden lg:table-cell">
                     Ciudad
                   </th>
                   <th className="px-4 py-3 text-left">Habilidades</th>
                   <th className="px-4 py-3 text-left hidden md:table-cell">
-                    Doct
+                    Hoja de vida
                   </th>
-                  <th className="px-4 py-3 text-left">Eliminar</th>
+                  <th className="px-4 py-3 text-left"></th>
                 </tr>
               </thead>
 
@@ -108,7 +118,7 @@
                       <td className="px-4 py-3">{candidato.Email}</td>
                       <td className="px-4 py-3">{candidato.Phone}</td>
                       <td className="px-4 py-3 hidden md:table-cell">
-                        {candidato.ProfessionId}
+                        {candidato.profession}
                       </td>
                       <td className="px-4 py-3 hidden sm:table-cell">
                         {candidato.ExperienceYears}
@@ -126,7 +136,7 @@
                       <td className="px-4 py-3">
                         {candidato.Skill.map((skill, index) => (
                           <p key={index} className="text-gray-600">
-                            {skill.name}
+                            {skill.name.name}
                           </p>
                         ))}
                       </td>
