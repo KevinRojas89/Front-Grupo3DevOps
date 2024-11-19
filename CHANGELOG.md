@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/KevinRojas89/Front-Grupo3DevOps/compare/v1.2.0...v1.2.1) (2024-11-19)
+
+
+### Bug Fixes
+
+* add toast ([0992ecc](https://github.com/KevinRojas89/Front-Grupo3DevOps/commit/0992ecc0bd256ff45a3d6c4581f73c2436c49416))
+
 ## [1.2.0](https://github.com/KevinRojas89/Front-Grupo3DevOps/compare/v1.1.0...v1.2.0) (2024-11-14)
 
 
