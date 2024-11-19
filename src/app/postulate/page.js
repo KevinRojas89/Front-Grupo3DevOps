@@ -1,4 +1,6 @@
 "use client";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import "../globals.css";
 import Image from "next/image";
 import { getResponse, postResponse } from "../services";
@@ -10,6 +12,7 @@ import { useCallback } from "react";
 
 const ToApply = () => {
   const router = useRouter();
+  const notify = (mensaje) => toast(mensaje);
   
   const handleLogoClick = () => {
     router.push("/");
@@ -19,6 +22,9 @@ const ToApply = () => {
   const [file, setFile] = useState(null);
   const [selectedProfession, setSelectedProfession] = useState();
   const [dataCities, setDataCities] = useState({ cities: [], skills: [] });
+
+  const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
   
   useEffect(() => {
     getInitialData();
@@ -76,11 +82,12 @@ const ToApply = () => {
       });
   
       if (response.status === 200) {
-        alert("Se ha postulado con éxito");
+        notify("Se ha postulado con éxito");
+        await esperar(1000);
         router.push('/');
       } else {
         console.error("Error en la respuesta del servidor:", response.data);
-        alert("Error al enviar el formulario. " + (response.data.error || "Por favor, verifica los datos."));
+        notify("Error al enviar el formulario. " + (response.data.error || "Por favor, verifica los datos."));
       }
 
     } catch (error) {
@@ -92,6 +99,7 @@ const ToApply = () => {
 
   return (
     <div className="mainContainer">
+      <ToastContainer></ToastContainer>
       <button data-tooltip-target="tooltip-home" type="button" class="inline-flex flex-col items-center justify-center px-5 rounded-tr-full rounded-tl-full hover:bg-gray-50 dark:hover:bg-gray-800 group">
         <svg class="w-10 h-10 mb-1 text-gray-50 dark:text-gray-300 group-hover:text-blue-700 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" onClick={handleLogoClick}>
           <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
@@ -99,7 +107,7 @@ const ToApply = () => {
         <span class="sr-only"></span>
       </button>
       <div className="pt-30 flex flex-col items-center ">
-      <Image src="/imagenes/logo.svg" alt="logo" width={200} height={200} onClick={handleLogoClick} />
+      <Image src="/imagenes/logo.svg" alt="logo" width={200} height={200} />
         <div className="container mx-auto p-8">
           <h1 className="text-4xl font-bold text-center mb-4">Formulario de Aplicación</h1>
           <hr className="border-t-2 border-gray-300 mb-8" />
@@ -112,8 +120,8 @@ const ToApply = () => {
             </div>
             
             <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="nombre">Nombre</label>
-              <input className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700" id="nombre" type="text" placeholder="Ingrese su nombre" required />
+              <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="nombre">Nombre Completo</label>
+              <input className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700" id="nombre" type="text" placeholder="Ingrese su nombre completo" required />
             </div>
 
             <div className="mb-6">
@@ -128,7 +136,7 @@ const ToApply = () => {
 
             <div className="mb-6">
               <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="profesion">Profesión</label>
-              <select className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700" id="profesion" onChange={(e) => setSelectedProfession(e.target.value)} required>
+              <select className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700"  id="profesion" onChange={(e) => setSelectedProfession(e.target.value)} required >
                 <option value="">Seleccione una profesión</option>
                 {dataProf.map((profession) => (
                   <option key={profession.ProfessionId} value={profession.ProfessionId}>{profession.Name}</option>
@@ -139,16 +147,24 @@ const ToApply = () => {
             <div className="mb-6">
               <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="experiencia">Años de Experiencia</label>
               <select className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700" id="experiencia">
-                <option value="0-1">0-1 años</option>
-                <option value="2-5">2-5 años</option>
-                <option value="6-10">6-10 años</option>
-                <option value="10+">Más de 10 años</option>
+              <option value="">Seleccione los años de experiencia</option>
+                <option value="1">1 año</option>
+                <option value="2">2 años</option>
+                <option value="3">3 años</option>
+                <option value="4">4 años</option>
+                <option value="5">5 años</option>
+                <option value="6">6 años</option>
+                <option value="7">7 años</option>
+                <option value="8">8 años</option>
+                <option value="9">9 años</option>
+                <option value="10">10 años</option>
               </select>
             </div>
 
             <div className="mb-6">
               <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="educacion">Nivel de Educación</label>
               <select className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700" id="educacion">
+              <option value="">Seleccione su nivel de educación</option>
                 <option value="secundaria">Secundaria</option>
                 <option value="universitario">Universitario</option>
                 <option value="maestria">Maestría</option>
@@ -157,12 +173,12 @@ const ToApply = () => {
             </div>
 
             <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="fecha">Seleccione la Fecha</label>
+              <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="fecha">Seleccione la Fecha de Postulación</label>
               <input className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700" id="fecha" type="date" required />
             </div>
 
             <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="ciudades">Ciudad</label>
+              <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="ciudades">Ciudades disponibles</label>
               <select className="shadow-md border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700" id="ciudades">
                 {dataCities.cities.map((city) => (
                   <option key={city} value={city}>{city}</option>
@@ -181,7 +197,7 @@ const ToApply = () => {
                     </div>
                   ))
                 ) : (
-                  <p>No hay habilidades para esta profesión</p>
+                  <p></p>
                 )}
               </div>
             </div>

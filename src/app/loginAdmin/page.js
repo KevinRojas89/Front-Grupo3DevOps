@@ -1,4 +1,6 @@
 "use client";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import Image from "next/image";
 import { useState } from "react";
 import { postResponse } from "../services";
@@ -7,11 +9,15 @@ import { useRouter } from "next/navigation";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const notify = (mensaje) => toast(mensaje);
+
 
   const router = useRouter();
   const handleLogoClick = () => {
     router.push("/"); 
   };
+
+  const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,21 +30,23 @@ function Login() {
     try {
       const response = await postResponse("Api/Login", data); 
       if (response.status === 200) {
-        alert(response.data.message);
+        notify('Ingreso exitoso');
         localStorage.setItem("loggedIn", true);
+        await esperar(2000);
         router.push('/paneladmin');
         
       } else {
-        alert("Credenciales incorrectas");
+        notify("Credenciales incorrectas");
       }
     } catch (err) {
       console.error("Error de autenticación:", err);
-      alert("Hubo un problema al iniciar sesión");
+      notify(err);
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <ToastContainer></ToastContainer>
       <div className="w-full max-w-md">
         <div className="flex justify-center">
           <Image
@@ -47,7 +55,6 @@ function Login() {
             alt="logo login"
             width={200}
             height={100}
-            onClick={handleLogoClick}
           />
         </div>
 
