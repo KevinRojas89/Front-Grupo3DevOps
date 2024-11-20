@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/KevinRojas89/Front-Grupo3DevOps/compare/v1.2.2...v1.2.3) (2024-11-20)
+
+
+### Bug Fixes
+
+* link in the front ([900d27c](https://github.com/KevinRojas89/Front-Grupo3DevOps/commit/900d27c1cf9a618d68c6924a2d6eb4524d87f8dc))
+
 ## [1.2.2](https://github.com/KevinRojas89/Front-Grupo3DevOps/compare/v1.2.1...v1.2.2) (2024-11-20)
 
 
