@@ -19,7 +19,7 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-white font-sans ">
+    <div className="bg-white font-sans">
       <div className="bg-white py-6 mx-1">
         <div className="container mx-10 md:flex md:items-center md:justify-between px-4 shadow-md block">
           <Image className="w-32" src="/imagenes/logo.svg" alt="Logo principal" width={100} height={100}/>

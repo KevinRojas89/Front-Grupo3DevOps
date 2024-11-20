@@ -1,12 +1,13 @@
 import axios from "axios";
 
 axios.defaults.validateStatus = () => true;
-export const urlBase = 'https://grupo-3-devops.onrender.com'; //https://grupo-3-devops.onrender.com/
+
+export const urlBase = 'https://grupo-3-devops.onrender.com/'; 
+
 
 
 export const getResponse = async (url) => {
   try {
-   
     const response = await axios.get(`${urlBase}${url}`);
     return response;
   } catch (error) {
